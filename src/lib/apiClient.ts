@@ -17,4 +17,4 @@ export default function apiClient(endpoint: string, options: object) {
     url: endpoint,
     ...options,
   }).then((res: AxiosResponse) => res);
-};
+}

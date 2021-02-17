@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-
+import { AxiosResponse } from "axios";
 import { Thunk } from "..";
 import apiClient from "../../lib/apiClient";
 
@@ -38,11 +38,14 @@ const teamsSlice = createSlice({
 export const getTeams = (): Thunk => async (dispatch) => {
   try {
     dispatch(getTeamsRequest());
-    const response = await apiClient("/teams/", { method: "GET" });
-    console.log(response)
+    const { data: teams }: AxiosResponse = await apiClient("/teams/", {
+      method: "GET",
+    });
+    dispatch(getTeamsSuccess({ teams }));
   } catch (err) {
     console.log(err);
   }
 };
 
 export const { getTeamsRequest, getTeamsSuccess } = teamsSlice.actions;
+export default teamsSlice.reducer;

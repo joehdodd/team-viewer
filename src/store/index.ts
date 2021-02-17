@@ -1,9 +1,12 @@
 import { combineReducers, configureStore, Action } from "@reduxjs/toolkit";
 import { ThunkAction } from "redux-thunk";
+import teams from "./slices/teams";
 
 import apiClient from "../lib/apiClient";
 
-const reducer = combineReducers({});
+const reducer = combineReducers({
+  teams,
+});
 
 const getStore = () => {
   const store = configureStore({

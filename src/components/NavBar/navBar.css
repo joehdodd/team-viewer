@@ -1,0 +1,35 @@
+a {
+  text-decoration: none;
+}
+
+.nav-bar-container {
+  background-color: #fff;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.5);
+  display: grid;
+  grid-auto-flow: column;
+  align-items: center;
+  justify-content: left;
+  grid-gap: 8px;
+  padding: 16px;
+}
+
+.nav-bar-title-container {
+  padding: 0 8px 0 0;
+  border-right: 2px solid #004976;
+}
+
+.nav-bar-title-container h1 {
+  margin: 0;
+}
+
+.nav-link {
+  padding: 8px;
+  border-radius: 4px;
+  color: #004976;
+  text-decoration: none;
+}
+
+.nav-link-selected {
+  color: #fff;
+  background-color: #004976;
+}

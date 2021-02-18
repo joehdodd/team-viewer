@@ -1,20 +1,21 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getTeams } from "../../store/slices/teams";
+import { getUsers } from "../../store/slices/users";
 import { RootState } from "../../store";
 
 import ItemList from "../../components/ItemList";
 
-export default function Teams(props: any) {
+export default function Users(props: any) {
   const dispatch = useDispatch();
-  const teams = useSelector((state: RootState) => state.teams.teams);
+  const users = useSelector((state: RootState) => state.users.users);
   useEffect(() => {
-    dispatch(getTeams());
+    const teamId = null;
+    dispatch(getUsers(teamId));
   }, [dispatch]);
   return (
     <div>
-      <h1>Teams</h1>
-      <ItemList items={teams} itemType="teams" />
+      <h1>Users</h1>
+      <ItemList items={users} itemType="users"/>
     </div>
   );
 }

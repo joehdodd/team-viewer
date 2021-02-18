@@ -1,0 +1,16 @@
+.big-nav-container {
+  display: grid;
+  grid-auto-flow: column;
+  align-self: center;
+  justify-self: center;
+  justify-content: center;
+  grid-gap: 32px;
+  margin: 8% auto;
+}
+
+.big-nav-card {
+  background-color: #fff;
+  border-radius: 4px;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.5);
+  padding: 64px;
+}

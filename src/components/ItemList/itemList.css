@@ -1,0 +1,12 @@
+.item-list-container {
+    display: grid;
+    grid-auto-flow: row;
+    grid-gap: 8px;
+}
+
+.item-list-row {
+    background-color: #fff;
+    padding: 8px;
+    border-radius: 4px;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.5);
+}

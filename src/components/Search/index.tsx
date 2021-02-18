@@ -1,12 +1,15 @@
-import React from 'react';
-import team from '../../store/slices/team';
+import "./search.css";
 
 export default function Search(props: any) {
-    return (
-        <div>
-            <input 
-                
-            />
-        </div>
-    )
+  return (
+    <div>
+      <input
+        placeholder={props.placeholder}
+        className="search-input"
+        type="text"
+        value={props.searchValue}
+        onChange={props.onChange}
+      />
+    </div>
+  );
 }

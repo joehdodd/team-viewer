@@ -3,20 +3,21 @@ import { AxiosResponse } from "axios";
 import { Thunk } from "..";
 import apiClient from "../../lib/apiClient";
 
-interface TeamState {
-  teams: object[];
-  loading: boolean;
-  error: null;
+interface Team {
+  id: string;
+  name: string;
 }
 
-interface TeamsSuccessPayload {
-  teams: object[];
+interface TeamState {
+  teams: Team[];
+  loading: boolean;
+  error: boolean;
 }
 
 export const initialState = {
   teams: [],
   loading: false,
-  error: null,
+  error: false,
 } as TeamState;
 
 const teamsSlice = createSlice({
@@ -24,12 +25,18 @@ const teamsSlice = createSlice({
   initialState,
   reducers: {
     getTeamsRequest(state) {
-      state.error = null;
+      state.teams = [];
+      state.error = false;
       state.loading = true;
     },
-    getTeamsSuccess(state, action: PayloadAction<TeamsSuccessPayload>) {
-      state.teams = action.payload.teams;
-      state.error = null;
+    getTeamsSuccess(state, { payload: teams }: PayloadAction<Team[]>) {
+      state.teams = teams;
+      state.error = false;
+      state.loading = false;
+    },
+    getTeamsError(state) {
+      state.teams = [];
+      state.error = true;
       state.loading = false;
     },
   },
@@ -41,11 +48,15 @@ export const getTeams = (): Thunk => async (dispatch) => {
     const { data: teams }: AxiosResponse = await apiClient("/teams/", {
       method: "GET",
     });
-    dispatch(getTeamsSuccess({ teams }));
+    dispatch(getTeamsSuccess(teams));
   } catch (err) {
-    console.log(err);
+    dispatch(getTeamsError());
   }
 };
 
-export const { getTeamsRequest, getTeamsSuccess } = teamsSlice.actions;
+export const {
+  getTeamsRequest,
+  getTeamsSuccess,
+  getTeamsError,
+} = teamsSlice.actions;
 export default teamsSlice.reducer;

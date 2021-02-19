@@ -52,6 +52,8 @@ export const getUsers = (currTeamId: string | null): Thunk => async (dispatch) =
     if (currTeamId) {
         users = users.filter((user: User) => user.teamId.find((id: string) => id === currTeamId))
     }
+    console.log(users);
+    
     dispatch(getUsersSuccess(users));
   } catch (err) {
     dispatch(getUsersError());

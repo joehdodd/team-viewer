@@ -30,7 +30,11 @@ export default function Teams(props: any) {
     <div>
       <div className="teams-overview-header">
         <h1>Teams</h1>
-        <Search searchValue={searchValue} onChange={handleChange} placeholder="Filter Teams..."/>
+        <Search
+          searchValue={searchValue}
+          onChange={handleChange}
+          placeholder="Filter Teams..."
+        />
       </div>
       <ItemList items={filteredTeams} itemType="teams" />
     </div>
